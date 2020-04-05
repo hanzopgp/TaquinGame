@@ -38,14 +38,14 @@ public class xImage {
 		Random r = new Random();
 		int index = r.nextInt(3)+1;
 		System.out.println("IMAGE NUMERO : " + index + " CHARGEE");
-		xImage.image = new ImageIcon("../images/img"+index+".jpg").getImage();
+		xImage.image = new ImageIcon("images/img"+index+".jpg").getImage();
 		bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
 		size = image.getWidth(null);
 	}
 
 	/**
 	* Recuperer l'image decoupee;
-	* @return l'image;
+	* @return bi l'image;
 	*/
 	public Image getImage(){
 		BufferedImage bi = bufferedImage.getSubimage(x, y, dx, dy);
