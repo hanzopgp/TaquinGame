@@ -13,6 +13,15 @@ public class xImage {
 	private int x,y,dx,dy,sx,sy;
 	public static int size;
 
+	/**
+	* Constructeur xImage;
+	* @param x position x;
+	* @param y position y;
+	* @param dx longueur;
+	* @param dy largeur;
+	* @param sx decalage x;
+	* @param sy decalage y;
+	*/
 	public xImage(int x, int y, int dx, int dy, int sx, int sy){
 		this.x = x;
 		this.y = y;
@@ -22,6 +31,9 @@ public class xImage {
 		this.sy = sy;
 	}
 
+	/**
+	* Initialise l'image;
+	*/
 	public void initImage() {
 		Random r = new Random();
 		int index = r.nextInt(3)+1;
@@ -31,6 +43,10 @@ public class xImage {
 		size = image.getWidth(null);
 	}
 
+	/**
+	* Recuperer l'image decoupee;
+	* @return l'image;
+	*/
 	public Image getImage(){
 		BufferedImage bi = bufferedImage.getSubimage(x, y, dx, dy);
 		bi.createGraphics().drawImage(image, x-sx, y-sy, null);

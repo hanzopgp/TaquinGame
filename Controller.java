@@ -7,6 +7,10 @@ public class Controller implements KeyListener {
 	
 	private Board b;
 	
+	/**
+	* Constructeur Controller;
+	* @param  b la grille de jeu;
+	*/
 	Controller(Board b) {
 		this.b = b;
 	}
@@ -16,6 +20,10 @@ public class Controller implements KeyListener {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	* Effectue une action sur la grille;
+	* @param e touche relachee;
+	*/
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_UP && this.b.getValidMoves().contains("u")) { //UP

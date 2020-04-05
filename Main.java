@@ -19,7 +19,10 @@ public class Main{
 	static int nbCols;
 	static int[][] winBoard;
 
-	//MAIN
+	/**
+	* Methode main;
+	* @param args liste des arguments;
+	*/
 	public static void main(String[] args) throws IOException{
 		
 		Path currentDir = Paths.get(".");				

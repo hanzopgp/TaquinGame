@@ -15,12 +15,22 @@ public class View extends JPanel {
 	private int val;
 	private xImage img;
 
+	/**
+	* Constructeur View;
+	* @param b la grille de jeu;
+	* @param val numero de la case;
+	* @param img image de la case;
+	*/
 	public View(Board b, int val, xImage img) {
 		this.board = b;
 		this.val = val;
 		this.img = img;
 	}
 
+	/**
+	* Override de la methode paintComponent;
+	* @param g objet Graphics;
+	*/
 	@Override 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

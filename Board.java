@@ -9,7 +9,11 @@ public class Board extends AbstractModelEcoutable {
 	int nbRows, nbCols;
 	int[][] board;
 
-	//CONSTRUCTEURS
+	/**
+	* Constructeur de la Board;
+	* @param nbRows nombre de lignes;
+	* @param nbCols nombres de colonnes;
+	*/
 	public Board(int nbRows, int nbCols) {
 		this.nbRows = nbRows;
 		this.nbCols = nbCols;
@@ -17,19 +21,33 @@ public class Board extends AbstractModelEcoutable {
 		this.ecouteurs = new ArrayList<>();		
 	}
 	
-	//ACCESSEURS
+	/**
+	* Getter;
+	* @return le nombre de lignes;
+	*/
 	public int getRows() {
 		return this.nbRows;
 	}
+	/**
+	* Getter;
+	* @return le nombre de colonnes;
+	*/
 	public int getCols() {
 		return this.nbCols;
 	}
+	/**
+	* Getter;
+	* @return la grille;
+	*/
 	public int[][] getBoard() {
 		return this.board;
 	}
 
 	//METHODES
-	//INITIALISE LA BOARD
+
+	/**
+	* Initialise la grille;
+	*/
 	public void initBoard() {
 		for(int i = 0; i < nbRows; i++) {
 			for(int j = 0; j < nbCols; j++) {
@@ -39,7 +57,9 @@ public class Board extends AbstractModelEcoutable {
 		board[nbRows - 1][nbCols - 1] = 0;
 	}	
 
-	//AFFICHAGE LA BOARD
+	/**
+	* Affiche la grille;
+	*/
 	public void displayBoard() {
 		System.out.println();
 		for(int i = 0; i < nbRows; i++) {
@@ -52,7 +72,10 @@ public class Board extends AbstractModelEcoutable {
 		System.out.println();
 	}
 
-	//COPIE UNE BOARD
+	/**
+	* Copie la grille actuelle;
+	* @return la grille copie;
+	*/
 	public int[][] copyBoard(){
 		int[][] winBoard = new int[nbRows][nbCols];
 		for(int i = 0; i < nbRows; i++) {
@@ -63,7 +86,10 @@ public class Board extends AbstractModelEcoutable {
 		return winBoard;
 	}
 
-	//GET LES COUPS VALIDES
+	/**
+	* Recupère la liste des coups valides de la grille;
+	* @return validMoves les coups valides de la grille;
+	*/
 	public ArrayList<String> getValidMoves() {
 		ArrayList<String> validMoves = new ArrayList<String>();
 		for(int i = 0; i < nbRows; i++) {
@@ -87,7 +113,10 @@ public class Board extends AbstractModelEcoutable {
 		return validMoves;
 	}
 
-	//DEPLACE L'ELEMENT DE VALEUR a SUIVANT LE DEPLACEMENT str
+	/**
+	* Joue sur la grille;
+	* @param str le coup a effectuer;
+	*/
 	public void moveElement(String str) {
 		for(int i = 0; i < nbRows; i++) {
 			for(int j = 0; j < nbCols; j++) {
@@ -119,7 +148,10 @@ public class Board extends AbstractModelEcoutable {
 		moveChangement(); // MISE A JOUR DU BOARD APRES MOVE
 	}
 
-	//UPDATE LA GRILLE SUIVANT LE MOVE str
+	/**
+	* Met a jour la grille;
+	* @param str type de coup;
+	*/
 	public void play(String str) {
 		ArrayList<String> validMoves = this.getValidMoves();
 		if(str.equals("u") && validMoves.contains("u")) {
@@ -136,7 +168,10 @@ public class Board extends AbstractModelEcoutable {
 		}
 	}
 
-	//MELANGE LA GRILLE
+	/**
+	* Melange la grille;
+	* @param level le niveau de difficulte choisit;
+	*/
 	public void shuffleBoard(int level) {
 		Random r = new Random();
 		int val;
@@ -149,7 +184,10 @@ public class Board extends AbstractModelEcoutable {
 		}
 	}
 
-	//CONDITION DE FIN DE PARTIE
+	/**
+	* Condition de fin de partie;
+	* @return booleen suivant si la partie est finie;
+	*/
 	public boolean isOver() {
 		int[][] winBoard = Main.winBoard;
 		for(int i = 0; i < nbRows; i++) {
@@ -162,6 +200,9 @@ public class Board extends AbstractModelEcoutable {
 		return true;
 	}
 	
+	/**
+	* Met a jour suivant le move effectue;
+	*/
 	@Override 
 	public void moveChangement () {
 		for(EcouteurModel ecm : this.ecouteurs) {

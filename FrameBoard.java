@@ -15,6 +15,10 @@ public class FrameBoard extends JFrame implements EcouteurModel {
 	private Controller controller;
 	private ArrayList<xImage> imgTab;
 	
+	/**
+	* Constructeur FrameBoard;
+	* @param b la grille de jeu;
+	*/
 	public FrameBoard(Board b) {
 		super("Taquin");
 		
@@ -49,6 +53,10 @@ public class FrameBoard extends JFrame implements EcouteurModel {
 		
 	} 
 	
+	/**
+	* Affiche la grille graphiquement;
+	* @param b la grille de jeu;
+	*/
 	public void printBoard(Board b) {
 		this.getContentPane().removeAll();	
 		for(int i = 0; i < b.getRows(); i++) {
@@ -64,6 +72,10 @@ public class FrameBoard extends JFrame implements EcouteurModel {
 		this.pack(); // REDIMENSIONNE LA FENETRE SELON LA DIMENSION DE SES ELEMENTS
 	}
 	
+	/**
+	* Met a jour le model et termine le programme si la partie est finie;
+	* @param source la source;
+	*/
 	@Override
 	public void ModelMiseAjour(Object source) {
 		this.printBoard(this.board);// REDESSINE AVEC LA GRILLE A JOUR
