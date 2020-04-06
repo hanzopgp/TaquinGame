@@ -1,4 +1,4 @@
-package tpfinalcomplementPOO_2;
+    package tpfinalcomplementPOO_2;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -13,6 +13,7 @@ public class FrameBoard extends JFrame implements EcouteurModel {
 	private View view;
 	private Board board;
 	private Controller controller;
+    private MouseController mouseController;
 	private ArrayList<xImage> imgTab;
 	
 	/**
@@ -25,12 +26,17 @@ public class FrameBoard extends JFrame implements EcouteurModel {
 		this.board = b;
 		board.ajoutEcouteur(this);
 		
-		//On ajoute le controller au frame pour le rendre controllable 
+		// CONTROLLER CLAVIER
 		this.controller = new Controller(board);
 		this.addKeyListener(this.controller);
+
+		// CONTROLLER SOURIS
+		this.mouseController = new MouseController(b);
+		this.addMouseListener(mouseController);
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLayout(new GridLayout(this.board.getRows(), this.board.getCols()));
+        this.setResizable(false);
 		this.setVisible(true);
 		
 		//Tableau des images

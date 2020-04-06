@@ -8,6 +8,8 @@ public class Board extends AbstractModelEcoutable {
 	//ATTRIBUTS
 	int nbRows, nbCols;
 	int[][] board;
+	private boolean valid = false;
+	private int caseToMove = -1;
 
 	/**
 	* Constructeur de la Board;
@@ -19,6 +21,24 @@ public class Board extends AbstractModelEcoutable {
 		this.nbCols = nbCols;
 		this.board = new int[nbRows][nbCols];
 		this.ecouteurs = new ArrayList<>();		
+	}
+
+	/**
+	* Setter;
+	* @param b la case valide;
+	*/
+	public void setValid(boolean b) {
+		this.valid = b;
+		this.moveChangement();
+	}
+
+	/**
+	* Setter;
+	* @param val la valeur de la case a bouger;
+	*/
+	public void setCaseToMove(int val) {
+		this.caseToMove = val;
+		this.moveChangement();
 	}
 	
 	/**
@@ -41,6 +61,20 @@ public class Board extends AbstractModelEcoutable {
 	*/
 	public int[][] getBoard() {
 		return this.board;
+	}
+	/**
+	* Getter;
+	* @return la grille;
+	*/
+	public boolean getValid() {
+		return this.valid;
+	}
+	/**
+	* Getter;
+	* @return la valeur de la case a bouger;
+	*/
+	public int getCaseToMove() {
+		return this.caseToMove;
 	}
 
 	//METHODES
@@ -111,6 +145,33 @@ public class Board extends AbstractModelEcoutable {
 			}
 		}
 		return validMoves;
+	}
+
+	/**
+	* Recupère la liste des cases voisines;
+	* @return neighbors liste des cases voisines;
+	*/
+	public ArrayList<Integer> getNeighbors() {
+		ArrayList<Integer> neighbors = new ArrayList<Integer>();
+		for(int i = 0; i < nbRows; i++) {
+			for(int j = 0; j < nbCols; j++) {
+				if(board[i][j] == 0) {
+					if(i+1 < nbRows) {
+						neighbors.add(board[i+1][j]);
+					}
+					if(j+1 < nbCols) {
+						neighbors.add(board[i][j+1]);
+					}
+					if(i-1 >= 0) {
+						neighbors.add(board[i-1][j]);
+					}
+					if(j-1 >= 0) {
+						neighbors.add(board[i][j-1]);
+					}	
+				}
+			}
+		}
+		return neighbors;
 	}
 
 	/**

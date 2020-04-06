@@ -51,6 +51,16 @@ public class View extends JPanel {
 		}	
 		g.drawImage(imgfinal, 0, 0, getWidth(), getHeight(), this);
 		//g.drawString(strLabel, (600/this.board.getCols())/2-10, (600/this.board.getCols())/2+10); //"DESSINE" LE NUMERO
+
+		// AFFICHE UN CADRE VERT LORQUE LA CASE EST VOISIN DE 0
+		if(this.board.getValid()) {
+			if(board.getNeighbors().contains(val) && board.getCaseToMove() == -1 || val == 0 && board.getCaseToMove() != -1) {
+				g.fillRect(0, 0, 600/this.board.getCols(), 10); // EN HAUT
+				g.fillRect(0, 0, 10, 600/this.board.getRows()); // COTE GAUCHE
+				g.fillRect(0, 600/this.board.getCols()-10, 600/this.board.getCols(), 10); // EN BAS 
+				g.fillRect(600/this.board.getRows()-10, 0, 10, 600/this.board.getRows()); // COTE DROIT 
+			}
+		}
 	}
 
 }
