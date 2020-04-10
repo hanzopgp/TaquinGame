@@ -25,14 +25,20 @@ public class Main{
 	*/
 	public static void main(String[] args) throws IOException{
 		
+		nbRows = 3;
+		nbCols = 3;
 		Path currentDir = Paths.get(".");				
 		System.out.println("Current directory in Main : " + currentDir.toAbsolutePath());
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Choisir le niveau ( de 1 a 10 )");
 		int level = Integer.parseInt(sc.nextLine());
-		System.out.println("Choisir la taille de la grille");
-		nbRows = Integer.parseInt(sc.nextLine());
-		nbCols = nbRows;
+		System.out.println("La taille de base du Taquin est de 3 par 3, voulez vous changer la taille ? ( 0/1 )");
+		int choseN = Integer.parseInt(sc.nextLine());
+		if(choseN == 1){
+			System.out.println("Choisir la taille de la grille");
+			nbRows = Integer.parseInt(sc.nextLine());
+			nbCols = nbRows;
+		}
 		System.out.println("Affichage graphique ( 0/1 ) ?");
 		int utilisationGUI = Integer.parseInt(sc.nextLine());
 		
