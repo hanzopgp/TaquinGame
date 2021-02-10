@@ -10,7 +10,7 @@
 # Presentation :
 
 >A taquin clone with MVC architecture and custom images.<br>
-3rd year BSC in computer science mark : 18/20
+2nd year BSC in computer science mark : 18/20
 
 ## Authors :
 
